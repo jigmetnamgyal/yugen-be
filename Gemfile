@@ -11,6 +11,8 @@ gem 'rack-cors'
 gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+gem 'graphql', '~> 1.12.13'
+
 group :development, :test do
   gem 'pry'
   gem 'rubocop-performance'
