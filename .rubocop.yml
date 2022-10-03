@@ -1,0 +1,28 @@
+require:
+  - rubocop-performance
+  - rubocop-rake
+  - rubocop-rails
+
+AllCops:
+  Exclude:
+    - bin/**/*
+    - tmp/**/*
+    - vendor/**/*
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  TargetRubyVersion: 3.0.3
+  NewCops: enable
+
+Metrics/MethodLength:
+  Enabled: false # Use SeliseMethodLength instead
+
+
+Naming/MemoizedInstanceVariableName:
+  EnforcedStyleForLeadingUnderscores: optional
+
+Style/Documentation:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  ForbiddenMethods:
+    - up
