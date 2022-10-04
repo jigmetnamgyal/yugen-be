@@ -5,4 +5,6 @@ class Profile < ApplicationRecord
   belongs_to :user
 
   has_many_attached :documents
+
+  enum kyc_status: { in_progress: 0, approved: 1, rejected: 2 }
 end

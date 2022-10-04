@@ -32,7 +32,6 @@ module Api
           return user if user.jti == header
 
           raise GraphQL::ExecutionError, 'Not Authorized'
-
         rescue ActiveRecord::RecordNotFound => e
           raise GraphQL::ExecutionError, 'Not Authorized'
         rescue JWT::DecodeError => e
