@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post '/graphql', to: 'graphql#execute'
       post '/users', to: 'registration#create'
+      post '/users/sign_in', to: 'login#login'
     end
   end
 end
