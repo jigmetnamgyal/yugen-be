@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  post '/graphql', to: 'graphql#execute'
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      post '/graphql', to: 'graphql#execute'
+    end
+  end
 end
