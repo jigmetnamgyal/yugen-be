@@ -10,5 +10,7 @@ module Types
       resolver: Resolvers::UsersResolver,
       connection: true
     )
+
+    field :user, resolver: Resolvers::UserResolver
   end
 end
