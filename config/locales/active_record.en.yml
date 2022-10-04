@@ -1,0 +1,5 @@
+en:
+  activerecord:
+    errors:
+      messages:
+        attached: 'is not attached'

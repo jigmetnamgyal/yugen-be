@@ -76,6 +76,7 @@ GEM
     erubi (1.11.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    graphql (1.12.24)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     json (2.6.2)
@@ -157,6 +158,9 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.21.0)
       parser (>= 3.1.1.0)
+    rubocop-performance (1.15.0)
+      rubocop (>= 1.7.0, < 2.0)
+      rubocop-ast (>= 0.4.0)
     rubocop-rails (2.16.1)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
@@ -179,17 +183,19 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  graphql (~> 1.12.13)
   pg (~> 1.1)
   pry
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.3, >= 7.0.3.1)
+  rubocop-performance
   rubocop-rails
   rubocop-rake
   tzinfo-data
 
 RUBY VERSION
-   ruby 3.0.2p107
+   ruby 3.0.3p157
 
 BUNDLED WITH
-   2.2.32
+   2.3.4
