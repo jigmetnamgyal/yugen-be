@@ -13,6 +13,8 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'graphql', '~> 1.12.13'
 gem 'jwt', '~> 2.5'
+gem 'search_object'
+gem 'search_object_graphql'
 
 group :development, :test do
   gem 'pry'
