@@ -2,6 +2,6 @@
 
 module Types
   class MutationType < Types::BaseObject
-    # field :send_for_kyc, mutation: Mutations::SendForKyc, authenticate: true
+    field :update_kyc_status, mutation: Mutations::UpdateKycStatus
   end
 end
