@@ -1,14 +1,17 @@
 # frozen_string_literal: true
 
 class ApplicationService
+  include Assigner
+
   attr_accessor :params, :current_user
 
-  def initialize(args, current_user)
-    @params = args
-    @current_user = current_user
+  def initialize(attributes = {})
+    assign_attributes(attributes)
   end
 
-  def self.class(args, current_user)
-    new(args, current_user).call
+  def self.call(args)
+    new(args).call
   end
+
+  def call; end
 end
