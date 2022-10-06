@@ -7,8 +7,8 @@ module Mutations
     end
 
     class UpdateUserProfileAttributes < Types::BaseInputObject
-      argument :email_address, String, required: false
       argument :phone_number, String, required: false
+      argument :name, String, required: false
       argument(
         :profile,
         ProfileAttributes,
