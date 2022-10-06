@@ -12,10 +12,7 @@ module Api
         variables = prepare_variables(params[:variables])
         query = params[:query]
         operation_name = params[:operationName]
-        context = {
-          # Query context goes here, for example:
-          # current_user: current_user,
-        }
+        context = { current_user: current_user }
         result = YugenBeSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
         render json: result
       rescue StandardError => e
@@ -25,6 +22,22 @@ module Api
       end
 
       private
+
+      def current_user
+        header = request.headers['Authorization']
+        begin
+          @decoded = GenerateJwtToken.decode(header)
+          user = User.find_by(email_address: @decoded[:email_address])
+
+          return user if user.jti == header
+
+          raise GraphQL::ExecutionError, 'Not Authorized'
+        rescue ActiveRecord::RecordNotFound => e
+          raise GraphQL::ExecutionError, 'Not Authorized'
+        rescue JWT::DecodeError => e
+          raise GraphQL::ExecutionError, 'Not Authorized'
+        end
+      end
 
       # Handle variables in form data, JSON body, or a blank value
       def prepare_variables(variables_param)

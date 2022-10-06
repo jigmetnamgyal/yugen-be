@@ -61,6 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_004_044_124) do
   create_table 'profiles', force: :cascade do |t|
     t.bigint 'user_id'
     t.string 'cid_or_passport', null: false
+    t.integer 'kyc_status', default: 0, null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['user_id'], name: 'index_profiles_on_user_id'
