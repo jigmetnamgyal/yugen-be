@@ -15,6 +15,7 @@ gem 'graphql', '~> 1.12.13'
 gem 'jwt', '~> 2.5'
 gem 'search_object'
 gem 'search_object_graphql'
+gem 'apollo_upload_server', '2.0.5'
 
 group :development, :test do
   gem 'pry'
