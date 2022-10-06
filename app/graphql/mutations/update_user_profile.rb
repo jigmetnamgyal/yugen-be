@@ -21,8 +21,7 @@ module Mutations
     field :user, Types::UserType, null: true
 
     def resolve(attributes:)
-      binding.pry
-      # { user: UserProfileUpdater.call({ params: attributes.to_h, current_user: current_user }) }
+      { user: UserProfileUpdater.call({ params: attributes.to_h, current_user: current_user }) }
     end
   end
 end

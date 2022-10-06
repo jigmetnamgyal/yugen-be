@@ -6,7 +6,6 @@ module Types
       description 'A valid URL, transported as a string'
 
       def self.coerce_input(file, _context)
-        binding.pry
         ActionDispatch::Http::UploadedFile.new(
           filename: file.original_filename,
           type: file.content_type,
