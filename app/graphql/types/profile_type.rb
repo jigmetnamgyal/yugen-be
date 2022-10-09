@@ -7,6 +7,7 @@ module Types
     field :kyc_status, Types::KycStatusEnum, null: false
     field :documents_url, [String], null: false
     field :avatar_url, String, null: true
+    field :wallet_address, String, null: true
 
     def documents_url
       object.documents.blobs.each_with_object([]) do |blob, array|

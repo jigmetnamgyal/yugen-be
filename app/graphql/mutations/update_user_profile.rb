@@ -9,6 +9,7 @@ module Mutations
     class UpdateUserProfileAttributes < Types::BaseInputObject
       argument :phone_number, String, required: false
       argument :name, String, required: false
+      argument :wallet_address, String, required: false
       argument(
         :profile,
         ProfileAttributes,
