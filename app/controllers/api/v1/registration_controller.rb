@@ -14,7 +14,8 @@ module Api
           :name,
           :phone_number,
           profile_attributes: %i[
-            cid_or_passport
+            document_number
+            document_type
             documents
           ]
         )

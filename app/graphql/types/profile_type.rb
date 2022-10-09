@@ -3,7 +3,8 @@
 module Types
   class ProfileType < BaseObject
     field :id, ID, null: false
-    field :cid_or_passport, String, null: false
+    field :document_number, String, null: false
+    field :document_type, Types::DocumentTypeEnum, null: false
     field :kyc_status, Types::KycStatusEnum, null: false
     field :documents_url, [String], null: false
     field :avatar_url, String, null: true

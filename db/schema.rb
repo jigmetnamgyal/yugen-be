@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_221_009_083_215) do
+ActiveRecord::Schema[7.0].define(version: 20_221_009_112_633) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -60,11 +60,12 @@ ActiveRecord::Schema[7.0].define(version: 20_221_009_083_215) do
 
   create_table 'profiles', force: :cascade do |t|
     t.bigint 'user_id'
-    t.string 'cid_or_passport', null: false
+    t.string 'document_number', null: false
     t.integer 'kyc_status', default: 0, null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.string 'wallet_address'
+    t.integer 'document_type'
     t.index ['user_id'], name: 'index_profiles_on_user_id'
   end
 

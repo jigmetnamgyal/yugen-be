@@ -8,4 +8,5 @@ class Profile < ApplicationRecord
   has_many_attached :documents
 
   enum kyc_status: { in_progress: 0, approved: 1, rejected: 2 }
+  enum document_type: { cid: 0, passport: 1 }
 end
