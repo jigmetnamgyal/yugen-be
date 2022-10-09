@@ -4,12 +4,12 @@ module Mutations
   class UpdateUserProfile < BaseMutation
     class ProfileAttributes < GraphQL::Schema::InputObject
       argument :avatar, Types::CustomTypes::FileType, required: false
+      argument :wallet_address, String, required: false
     end
 
     class UpdateUserProfileAttributes < Types::BaseInputObject
       argument :phone_number, String, required: false
       argument :name, String, required: false
-      argument :wallet_address, String, required: false
       argument(
         :profile,
         ProfileAttributes,
