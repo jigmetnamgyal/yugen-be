@@ -11,7 +11,7 @@ module Types
     field :lifetime_funding_received, Float, null: true
     field :user, Types::UserType, null: false
     field :grant_banner_url, String, null: true
-    field :project, Types::ProjectType, null: true
+    field :projects, [Types::ProjectType], null: true
 
     def grant_banner_url
       return if object.grant_banner.blob.nil?

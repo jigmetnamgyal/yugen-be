@@ -8,6 +8,7 @@ module Mutations
       argument :website_url, String, required: false
       argument :social_media_url, String, required: false
       argument :lifetime_funding_received, Float, required: false
+      argument :grant_banner, Types::CustomTypes::FileType, required: false
     end
 
     argument :attributes, CreateGrantAttributes, required: true
