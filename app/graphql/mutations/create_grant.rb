@@ -15,7 +15,7 @@ module Mutations
     field :user, Types::GrantType, null: true
 
     def resolve(attributes:)
-      { user: KycStatusUpdater.call({ params: attributes.to_h, current_user: current_user }) }
+      { user: Grant::Creator.call({ params: attributes.to_h, current_user: current_user }) }
     end
   end
 end
