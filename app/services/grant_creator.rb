@@ -2,9 +2,6 @@
 
 class GrantCreator < ApplicationService
   def call
-    binding.pry
-    User.find(params[:user_id]).tap do |user|
-      user.profile.update!(kyc_status: params[:kyc_status])
-    end
+    Grant.create!(params.merge!(user_id: current_user.id))
   end
 end
