@@ -6,7 +6,7 @@ module Resolvers
 
     scope { Project.all }
 
-    type Types::GrantType.connection_type, null: false
+    type Types::ProjectType.connection_type, null: false
 
     option :ideas, type: Boolean, with: :filter_projects
 
