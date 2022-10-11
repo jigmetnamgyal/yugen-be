@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_221_009_112_633) do
+ActiveRecord::Schema[7.0].define(version: 20_221_009_133_704) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -56,6 +56,17 @@ ActiveRecord::Schema[7.0].define(version: 20_221_009_112_633) do
     t.datetime 'updated_at', null: false
     t.index %w[attachable_type attachable_id], name: 'index_attachments_on_attachable'
     t.index ['user_id'], name: 'index_attachments_on_user_id'
+  end
+
+  create_table 'grants', force: :cascade do |t|
+    t.string 'title', null: false
+    t.text 'description', null: false
+    t.string 'website_url'
+    t.string 'social_media_url'
+    t.integer 'grant_review_status', default: 0
+    t.float 'funding_received'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
   create_table 'profiles', force: :cascade do |t|
