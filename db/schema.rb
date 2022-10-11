@@ -88,10 +88,10 @@ ActiveRecord::Schema[7.0].define(version: 20_221_011_045_112) do
     t.string 'project_description', null: false
     t.string 'website_url', null: false
     t.string 'social_media_url', null: false
-    t.bigint 'projects_id'
+    t.bigint 'grant_id'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.index ['projects_id'], name: 'index_projects_on_projects_id'
+    t.index ['grant_id'], name: 'index_projects_on_grant_id'
   end
 
   create_table 'users', force: :cascade do |t|
