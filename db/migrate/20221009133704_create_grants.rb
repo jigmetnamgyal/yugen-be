@@ -9,7 +9,7 @@ class CreateGrants < ActiveRecord::Migration[7.0]
       t.string :website_url
       t.string :social_media_url
       t.integer :grant_review_status, default: 0
-      t.float :funding_received
+      t.float :lifetime_funding_received
 
       t.timestamps
     end

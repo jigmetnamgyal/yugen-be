@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_221_009_133_704) do
+ActiveRecord::Schema[7.0].define(version: 20_221_011_045_112) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -65,7 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_009_133_704) do
     t.string 'website_url'
     t.string 'social_media_url'
     t.integer 'grant_review_status', default: 0
-    t.float 'funding_received'
+    t.float 'lifetime_funding_received'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['user_id'], name: 'index_grants_on_user_id'
@@ -80,6 +80,18 @@ ActiveRecord::Schema[7.0].define(version: 20_221_009_133_704) do
     t.string 'wallet_address'
     t.integer 'document_type'
     t.index ['user_id'], name: 'index_profiles_on_user_id'
+  end
+
+  create_table 'projects', force: :cascade do |t|
+    t.float 'lifetime_funding_received'
+    t.string 'project_title', null: false
+    t.string 'project_description', null: false
+    t.string 'website_url', null: false
+    t.string 'social_media_url', null: false
+    t.bigint 'projects_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['projects_id'], name: 'index_projects_on_projects_id'
   end
 
   create_table 'users', force: :cascade do |t|
