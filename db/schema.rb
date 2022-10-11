@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_221_011_121_047) do
+ActiveRecord::Schema[7.0].define(version: 20_221_011_122_329) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -70,15 +70,15 @@ ActiveRecord::Schema[7.0].define(version: 20_221_011_121_047) do
     t.datetime 'updated_at', null: false
     t.date 'start_date'
     t.date 'end_date'
+    t.bigint 'orders_id'
+    t.index ['orders_id'], name: 'index_grants_on_orders_id'
     t.index ['user_id'], name: 'index_grants_on_user_id'
   end
 
   create_table 'orders', force: :cascade do |t|
     t.bigint 'user_id', null: false
-    t.bigint 'grant_id'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.index ['grant_id'], name: 'index_orders_on_grant_id'
     t.index ['user_id'], name: 'index_orders_on_user_id'
   end
 
