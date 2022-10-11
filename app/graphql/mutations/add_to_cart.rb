@@ -7,7 +7,7 @@ module Mutations
     end
 
     argument :attributes, AddToCartAttributes, required: true
-    type Types::GrantType
+    type Types::OrderType
 
     def resolve(attributes:)
       CartCreator.call({ params: attributes.to_h, current_user: current_user })

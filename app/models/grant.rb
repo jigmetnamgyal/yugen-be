@@ -2,10 +2,11 @@
 
 class Grant < ApplicationRecord
   has_many :projects, dependent: :destroy
+
+  has_one :order
   has_one_attached :grant_banner
 
   belongs_to :user
-  belongs_to :order, optional: true
 
   validates :description, :title, presence: true
 

@@ -75,7 +75,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_011_121_047) do
 
   create_table 'orders', force: :cascade do |t|
     t.bigint 'user_id', null: false
-    t.bigint 'grant_id', null: false
+    t.bigint 'grant_id'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['grant_id'], name: 'index_orders_on_grant_id'
@@ -125,7 +125,6 @@ ActiveRecord::Schema[7.0].define(version: 20_221_011_121_047) do
   add_foreign_key 'active_storage_variant_records', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'attachments', 'users'
   add_foreign_key 'grants', 'users'
-  add_foreign_key 'orders', 'grants'
   add_foreign_key 'orders', 'users'
   add_foreign_key 'profiles', 'users'
   add_foreign_key 'projects', 'grants'
