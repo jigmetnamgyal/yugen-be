@@ -12,11 +12,16 @@ module Types
     field :user, Types::UserType, null: false
     field :grant_banner_url, String, null: true
     field :projects, [Types::ProjectType], null: true
+    field :project_count, Integer, null: true
 
     def grant_banner_url
       return if object.grant_banner.blob.nil?
 
       rails_blob_url(object.grant_banner.blob, only_path: true)
+    end
+
+    def project_count
+      object.projects&.count
     end
   end
 end
