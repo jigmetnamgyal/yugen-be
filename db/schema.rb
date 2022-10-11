@@ -70,8 +70,8 @@ ActiveRecord::Schema[7.0].define(version: 20_221_011_122_329) do
     t.datetime 'updated_at', null: false
     t.date 'start_date'
     t.date 'end_date'
-    t.bigint 'orders_id'
-    t.index ['orders_id'], name: 'index_grants_on_orders_id'
+    t.bigint 'order_id'
+    t.index ['order_id'], name: 'index_grants_on_order_id'
     t.index ['user_id'], name: 'index_grants_on_user_id'
   end
 
