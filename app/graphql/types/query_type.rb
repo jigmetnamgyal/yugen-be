@@ -12,5 +12,7 @@ module Types
     )
 
     field :user, resolver: Resolvers::UserResolver
+
+    field :grants, resolver: Resolvers::GrantsResolver
   end
 end
