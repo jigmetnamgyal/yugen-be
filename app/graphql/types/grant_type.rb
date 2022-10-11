@@ -13,6 +13,8 @@ module Types
     field :grant_banner_url, String, null: true
     field :projects, [Types::ProjectType], null: true
     field :project_count, Integer, null: true
+    field :start_date, GraphQL::Types::ISO8601Date, null: true
+    field :end_date, GraphQL::Types::ISO8601Date, null: true
 
     def grant_banner_url
       return if object.grant_banner.blob.nil?

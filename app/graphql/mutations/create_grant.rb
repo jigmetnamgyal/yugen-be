@@ -9,6 +9,8 @@ module Mutations
       argument :social_media_url, String, required: false
       argument :lifetime_funding_received, Float, required: false
       argument :grant_banner, Types::CustomTypes::FileType, required: false
+      argument :start_date, GraphQL::Types::ISO8601Date, required: true
+      argument :end_date, GraphQL::Types::ISO8601Date, required: false
     end
 
     argument :attributes, CreateGrantAttributes, required: true
