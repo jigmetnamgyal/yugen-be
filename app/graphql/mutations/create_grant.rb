@@ -8,14 +8,13 @@ module Mutations
       argument :website_url, String, required: false
       argument :social_media_url, String, required: false
       argument :lifetime_funding_received, Float, required: false
-      argument :grant_review_status, Types::GrantReviewStatusEnum, required: false
     end
 
     argument :attributes, CreateGrantAttributes, required: true
-    field :user, Types::GrantType, null: true
+    type Types::GrantType
 
     def resolve(attributes:)
-      { user: Grant::Creator.call({ params: attributes.to_h, current_user: current_user }) }
+      GrantCreator.call({ params: attributes.to_h, current_user: current_user })
     end
   end
 end
