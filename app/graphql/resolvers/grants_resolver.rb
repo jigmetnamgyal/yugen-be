@@ -13,7 +13,7 @@ module Resolvers
     DESC
 
     def apply_search(scope, value)
-      scope.where("CONCAT_WS(' ', title,) iLIKE ?", "%#{value.squish}%")
+      scope.where("CONCAT_WS(' ', title) iLIKE ?", "%#{value.squish}%")
     end
   end
 end
