@@ -3,6 +3,7 @@
 class CreateGrants < ActiveRecord::Migration[7.0]
   def change
     create_table :grants do |t|
+      t.references :user, foreign_key: true
       t.string :title, null: false
       t.text :description, null: false
       t.string :website_url

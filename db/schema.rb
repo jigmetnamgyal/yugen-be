@@ -59,6 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_009_133_704) do
   end
 
   create_table 'grants', force: :cascade do |t|
+    t.bigint 'user_id'
     t.string 'title', null: false
     t.text 'description', null: false
     t.string 'website_url'
@@ -67,6 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_009_133_704) do
     t.float 'funding_received'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.index ['user_id'], name: 'index_grants_on_user_id'
   end
 
   create_table 'profiles', force: :cascade do |t|
@@ -96,5 +98,6 @@ ActiveRecord::Schema[7.0].define(version: 20_221_009_133_704) do
   add_foreign_key 'active_storage_attachments', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'active_storage_variant_records', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'attachments', 'users'
+  add_foreign_key 'grants', 'users'
   add_foreign_key 'profiles', 'users'
 end
