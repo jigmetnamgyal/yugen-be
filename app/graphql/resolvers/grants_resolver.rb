@@ -8,7 +8,7 @@ module Resolvers
 
     type Types::GrantType.connection_type, null: false
 
-    options :grant_review_status, Types::GrantReviewStatusEnum, with: :apply_enum
+    option :grant_review_status, type: Types::GrantReviewStatusEnum, with: :apply_enum
 
     option :query, type: String, with: :apply_search, description: <<~DESC
       Supports searches on grants name
