@@ -8,7 +8,8 @@ class CreateProjects < ActiveRecord::Migration[7.0]
       t.string :project_description, null: false
       t.string :website_url, null: false
       t.string :social_media_url, null: false
-      t.references :grant
+      t.references :grant, foreign_key: true
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

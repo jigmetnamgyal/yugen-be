@@ -7,5 +7,6 @@ module Types
 
     # grant
     field :create_grant, mutation: Mutations::CreateGrant
+    field :add_project, mutation: Mutations::AddProject
   end
 end
