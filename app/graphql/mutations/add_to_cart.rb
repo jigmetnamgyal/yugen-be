@@ -3,7 +3,9 @@
 module Mutations
   class AddToCart < BaseMutation
     class AddToCartAttributes < Types::BaseInputObject
-      argument :grant_id, Integer, required: true
+      argument :project_id, Integer, required: true
+      argument :matching_pool_contribution, Float, required: true
+      argument :payment_type, Types::PaymentTypeEnum, required: true
     end
 
     argument :attributes, AddToCartAttributes, required: true

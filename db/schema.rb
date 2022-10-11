@@ -74,11 +74,13 @@ ActiveRecord::Schema[7.0].define(version: 20_221_011_121_047) do
   end
 
   create_table 'orders', force: :cascade do |t|
+    t.float 'matching_pool_contribution', default: 0.0, null: false
+    t.integer 'payment_type', default: 0, null: false
     t.bigint 'user_id', null: false
-    t.bigint 'grant_id'
+    t.bigint 'project_id'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.index ['grant_id'], name: 'index_orders_on_grant_id'
+    t.index ['project_id'], name: 'index_orders_on_project_id'
     t.index ['user_id'], name: 'index_orders_on_user_id'
   end
 
