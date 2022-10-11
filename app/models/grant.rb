@@ -5,7 +5,7 @@ class Grant < ApplicationRecord
   has_one_attached :grant_banner
 
   belongs_to :user
-  belongs_to :order
+  belongs_to :order, optional: true
 
   validates :description, :title, presence: true
 
