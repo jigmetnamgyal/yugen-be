@@ -10,6 +10,7 @@ module Types
     field :funding_received, Float, null: true
     field :user, Types::UserType, null: false
     field :project_banner_url, String, null: true
+    field :total_contributor, Integer, null: false
 
     def project_banner_url
       return if object.project_banner.blob.nil?

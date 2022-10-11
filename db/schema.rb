@@ -88,6 +88,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_011_045_112) do
     t.string 'project_description', null: false
     t.string 'website_url', null: false
     t.string 'social_media_url', null: false
+    t.integer 'total_contributor', default: 0, null: false
     t.bigint 'grant_id'
     t.bigint 'user_id'
     t.datetime 'created_at', null: false
