@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_221_011_045_112) do
+ActiveRecord::Schema[7.0].define(version: 20_221_011_081_408) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -68,6 +68,8 @@ ActiveRecord::Schema[7.0].define(version: 20_221_011_045_112) do
     t.float 'lifetime_funding_received'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.date 'start_date'
+    t.date 'end_date'
     t.index ['user_id'], name: 'index_grants_on_user_id'
   end
 
