@@ -7,16 +7,14 @@ module Types
     field :project_description, String, null: false
     field :website_url, String, null: true
     field :social_media_url, String, null: true
-    field :grant_review_status, Types::GrantReviewStatusEnum, null: false
     field :funding_received, Float, null: true
     field :user, Types::UserType, null: false
-    field :grant_banner_url, String, null: true
-    field :project, Types::ProjectType, null: true
+    field :project_banner_url, String, null: true
 
-    def grant_banner_url
-      return if object.grant_banner.blob.nil?
+    def project_banner_url
+      return if object.project_banner.blob.nil?
 
-      rails_blob_url(object.grant_banner.blob, only_path: true)
+      rails_blob_url(object.project_banner.blob, only_path: true)
     end
   end
 end
