@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_221_011_121_047) do
+ActiveRecord::Schema[7.0].define(version: 20_221_011_143_939) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -80,6 +80,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_011_121_047) do
     t.bigint 'project_id'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.boolean 'payment_completed', default: false
     t.index ['project_id'], name: 'index_orders_on_project_id'
     t.index ['user_id'], name: 'index_orders_on_user_id'
   end
@@ -106,6 +107,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_011_121_047) do
     t.bigint 'user_id'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.float 'grant_fund'
     t.index ['grant_id'], name: 'index_projects_on_grant_id'
     t.index ['user_id'], name: 'index_projects_on_user_id'
   end
