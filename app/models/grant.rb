@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Grant < ApplicationRecord
+  has_many :projects, dependent: :destroy
   belongs_to :user
 
   validates :description, :title, presence: true
