@@ -11,5 +11,6 @@ module Types
 
     # order
     field :add_to_cart, mutation: Mutations::AddToCart
+    field :destroy_cart, mutation: Mutations::DestroyCart
   end
 end
