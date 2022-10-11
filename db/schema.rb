@@ -83,7 +83,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_011_045_112) do
   end
 
   create_table 'projects', force: :cascade do |t|
-    t.float 'lifetime_funding_received'
+    t.float 'funding_received'
     t.string 'project_title', null: false
     t.string 'project_description', null: false
     t.string 'website_url', null: false
