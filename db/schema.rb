@@ -107,7 +107,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_011_143_939) do
     t.bigint 'user_id'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.float 'grant_fund'
+    t.float 'goal_amount'
     t.index ['grant_id'], name: 'index_projects_on_grant_id'
     t.index ['user_id'], name: 'index_projects_on_user_id'
   end
