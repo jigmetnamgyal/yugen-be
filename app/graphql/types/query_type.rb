@@ -18,5 +18,7 @@ module Types
 
     field :projects, resolver: Resolvers::ProjectsResolver
     field :project, resolver: Resolvers::ProjectResolver
+
+    field :orders, resolver: Resolvers::OrdersResolver
   end
 end
