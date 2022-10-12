@@ -12,6 +12,8 @@ module Types
     field :project_banner_url, String, null: true
     field :total_contributor, Integer, null: false
     field :funding_info, Types::FundingInfoType, null: true
+    field :start_date, GraphQL::Types::ISO8601Date, null: true
+    field :end_date, GraphQL::Types::ISO8601Date, null: true
     field :project_match_amount, Float, null: true, description: 'QF amount for grant project only'
 
     def project_banner_url
@@ -21,6 +23,8 @@ module Types
     end
 
     def project_match_amount
+      return unless object.grant_id
+
       total_voting_power = grant.total_voting_power
       life_time_amount_received = grant.lifetime_funding_received
       project_voting_power = object.voting_power

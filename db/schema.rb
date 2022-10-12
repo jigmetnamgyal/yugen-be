@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_221_012_221_843) do
+ActiveRecord::Schema[7.0].define(version: 20_221_012_234_852) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -119,6 +119,8 @@ ActiveRecord::Schema[7.0].define(version: 20_221_012_221_843) do
     t.float 'goal_amount'
     t.float 'voting_power'
     t.float 'grant_contribution'
+    t.date 'start_date'
+    t.date 'end_date'
     t.index ['grant_id'], name: 'index_projects_on_grant_id'
     t.index ['user_id'], name: 'index_projects_on_user_id'
   end
