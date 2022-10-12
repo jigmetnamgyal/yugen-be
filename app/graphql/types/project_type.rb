@@ -11,6 +11,7 @@ module Types
     field :user, Types::UserType, null: false
     field :project_banner_url, String, null: true
     field :total_contributor, Integer, null: false
+    field :funding_info, Types::FundingInfoType, null: true
 
     def project_banner_url
       return if object.project_banner.blob.nil?
