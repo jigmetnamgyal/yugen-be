@@ -8,5 +8,13 @@ module Types
     # grant
     field :create_grant, mutation: Mutations::CreateGrant
     field :add_project, mutation: Mutations::AddProject
+
+    # order
+    field :add_to_cart, mutation: Mutations::AddToCart
+    field :update_order, mutation: Mutations::UpdateOrder
+    field :destroy_cart, mutation: Mutations::DestroyCart
+
+    # Checkout
+    field :proceed_checkout, mutation: Mutations::ProceedCheckout
   end
 end

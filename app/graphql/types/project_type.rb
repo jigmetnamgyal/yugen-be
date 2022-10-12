@@ -8,6 +8,7 @@ module Types
     field :website_url, String, null: true
     field :social_media_url, String, null: true
     field :funding_received, Float, null: true
+    field :goal_amount, Float, null: true
     field :user, Types::UserType, null: false
     field :project_banner_url, String, null: true
     field :total_contributor, Integer, null: false

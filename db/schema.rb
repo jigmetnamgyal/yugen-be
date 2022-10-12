@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_221_011_081_408) do
+ActiveRecord::Schema[7.0].define(version: 20_221_011_143_939) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -73,6 +73,18 @@ ActiveRecord::Schema[7.0].define(version: 20_221_011_081_408) do
     t.index ['user_id'], name: 'index_grants_on_user_id'
   end
 
+  create_table 'orders', force: :cascade do |t|
+    t.float 'matching_pool_contribution', default: 0.0, null: false
+    t.integer 'payment_type', default: 0, null: false
+    t.bigint 'user_id', null: false
+    t.bigint 'project_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.boolean 'payment_completed', default: false
+    t.index ['project_id'], name: 'index_orders_on_project_id'
+    t.index ['user_id'], name: 'index_orders_on_user_id'
+  end
+
   create_table 'profiles', force: :cascade do |t|
     t.bigint 'user_id'
     t.string 'document_number', null: false
@@ -95,6 +107,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_011_081_408) do
     t.bigint 'user_id'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.float 'goal_amount'
     t.index ['grant_id'], name: 'index_projects_on_grant_id'
     t.index ['user_id'], name: 'index_projects_on_user_id'
   end
@@ -116,6 +129,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_011_081_408) do
   add_foreign_key 'active_storage_variant_records', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'attachments', 'users'
   add_foreign_key 'grants', 'users'
+  add_foreign_key 'orders', 'users'
   add_foreign_key 'profiles', 'users'
   add_foreign_key 'projects', 'grants'
   add_foreign_key 'projects', 'users'

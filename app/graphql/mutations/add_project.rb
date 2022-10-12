@@ -7,8 +7,9 @@ module Mutations
       argument :project_description, String, required: true
       argument :website_url, String, required: false
       argument :social_media_url, String, required: false
-      argument :grant_id, Integer, required: false
+      argument :grant_id, Integer, required: false, description: 'Not required for Ideas'
       argument :project_banner, Types::CustomTypes::FileType, required: false
+      argument :goal_amount, Float, required: false, description: 'Not Required for Grant projects'
     end
 
     argument :attributes, AddProjectAttributes, required: true
