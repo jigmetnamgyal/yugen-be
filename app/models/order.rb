@@ -4,5 +4,5 @@ class Order < ApplicationRecord
   belongs_to :project
   belongs_to :user
 
-  enum payment_type: { nu: 0, eth: 1, btc: 2 }
+  enum payment_type: { nu: 0, eth: 1 }
 end

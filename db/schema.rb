@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_221_012_220_009) do
+ActiveRecord::Schema[7.0].define(version: 20_221_012_221_843) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -56,6 +56,15 @@ ActiveRecord::Schema[7.0].define(version: 20_221_012_220_009) do
     t.datetime 'updated_at', null: false
     t.index %w[attachable_type attachable_id], name: 'index_attachments_on_attachable'
     t.index ['user_id'], name: 'index_attachments_on_user_id'
+  end
+
+  create_table 'funding_infos', force: :cascade do |t|
+    t.float 'funding_in_eth'
+    t.float 'funding_in_nu'
+    t.bigint 'project_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['project_id'], name: 'index_funding_infos_on_project_id'
   end
 
   create_table 'grants', force: :cascade do |t|
@@ -130,6 +139,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_012_220_009) do
   add_foreign_key 'active_storage_attachments', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'active_storage_variant_records', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'attachments', 'users'
+  add_foreign_key 'funding_infos', 'projects'
   add_foreign_key 'grants', 'users'
   add_foreign_key 'orders', 'users'
   add_foreign_key 'profiles', 'users'

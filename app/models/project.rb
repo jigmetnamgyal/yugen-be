@@ -2,6 +2,7 @@
 
 class Project < ApplicationRecord
   has_one :order, dependent: :destroy
+  has_one :funding_info, dependent: :destroy
   has_one_attached :project_banner
 
   belongs_to :user
