@@ -12,11 +12,24 @@ module Types
     field :project_banner_url, String, null: true
     field :total_contributor, Integer, null: false
     field :funding_info, Types::FundingInfoType, null: true
+    field :project_match_amount, Float, null: true, description: 'QF amount for grant project only'
 
     def project_banner_url
       return if object.project_banner.blob.nil?
 
       rails_blob_url(object.project_banner.blob, only_path: true)
+    end
+
+    def project_match_amount
+      total_voting_power = grant.total_voting_power
+      life_time_amount_received = grant.lifetime_funding_received
+      project_voting_power = object.voting_power
+
+      (project_voting_power / total_voting_power) * life_time_amount_received
+    end
+
+    def grant
+      @_grant ||= object.grant
     end
   end
 end
