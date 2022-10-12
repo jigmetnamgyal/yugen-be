@@ -20,5 +20,18 @@ module Mutations
     def group_orders_with_project_id
       Order.where(payment_completed: true).group_by(&:project_id)
     end
+
+    # Calculate the total Contributor of the project.
+    def project_total_contributor
+      Project.all.each do |project|
+        total_contributor = Order
+                            .where(project_id: project.id, payment_completed: true)
+                            .pluck(:user_id)
+                            .uniq
+                            .count
+
+        project.update!(total_contributor: total_contributor)
+      end
+    end
   end
 end
