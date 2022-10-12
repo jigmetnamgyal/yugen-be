@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_221_011_143_939) do
+ActiveRecord::Schema[7.0].define(version: 20_221_012_234_852) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -58,6 +58,15 @@ ActiveRecord::Schema[7.0].define(version: 20_221_011_143_939) do
     t.index ['user_id'], name: 'index_attachments_on_user_id'
   end
 
+  create_table 'funding_infos', force: :cascade do |t|
+    t.float 'funding_in_eth'
+    t.float 'funding_in_nu'
+    t.bigint 'project_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['project_id'], name: 'index_funding_infos_on_project_id'
+  end
+
   create_table 'grants', force: :cascade do |t|
     t.bigint 'user_id'
     t.string 'title', null: false
@@ -70,6 +79,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_011_143_939) do
     t.datetime 'updated_at', null: false
     t.date 'start_date'
     t.date 'end_date'
+    t.float 'total_voting_power'
     t.index ['user_id'], name: 'index_grants_on_user_id'
   end
 
@@ -97,7 +107,6 @@ ActiveRecord::Schema[7.0].define(version: 20_221_011_143_939) do
   end
 
   create_table 'projects', force: :cascade do |t|
-    t.float 'funding_received'
     t.string 'project_title', null: false
     t.string 'project_description', null: false
     t.string 'website_url', null: false
@@ -108,6 +117,10 @@ ActiveRecord::Schema[7.0].define(version: 20_221_011_143_939) do
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.float 'goal_amount'
+    t.float 'voting_power'
+    t.float 'grant_contribution'
+    t.date 'start_date'
+    t.date 'end_date'
     t.index ['grant_id'], name: 'index_projects_on_grant_id'
     t.index ['user_id'], name: 'index_projects_on_user_id'
   end
@@ -128,6 +141,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_011_143_939) do
   add_foreign_key 'active_storage_attachments', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'active_storage_variant_records', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'attachments', 'users'
+  add_foreign_key 'funding_infos', 'projects'
   add_foreign_key 'grants', 'users'
   add_foreign_key 'orders', 'users'
   add_foreign_key 'profiles', 'users'

@@ -10,6 +10,8 @@ module Mutations
       argument :grant_id, Integer, required: false, description: 'Not required for Ideas'
       argument :project_banner, Types::CustomTypes::FileType, required: false
       argument :goal_amount, Float, required: false, description: 'Not Required for Grant projects'
+      argument :start_date, GraphQL::Types::ISO8601Date, required: false
+      argument :end_date, GraphQL::Types::ISO8601Date, required: false
     end
 
     argument :attributes, AddProjectAttributes, required: true
