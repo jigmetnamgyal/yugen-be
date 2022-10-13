@@ -36,7 +36,7 @@ module Mutations
 
         # use each with object instead. Too tired rn
         Order.where(project_id: project.id, payment_completed: true).each do |project_order|
-          sum += Math.sqrt(project_order)
+          sum += Math.sqrt(project_order.matching_pool_contribution)
         end
 
         project.update!(voting_power: sum**2)

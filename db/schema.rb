@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_221_012_234_852) do
+ActiveRecord::Schema[7.0].define(version: 20_221_013_000_431) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -79,7 +79,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_012_234_852) do
     t.datetime 'updated_at', null: false
     t.date 'start_date'
     t.date 'end_date'
-    t.float 'total_voting_power'
+    t.float 'total_voting_power', default: 0.0
     t.index ['user_id'], name: 'index_grants_on_user_id'
   end
 
@@ -117,7 +117,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_012_234_852) do
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.float 'goal_amount'
-    t.float 'voting_power'
+    t.float 'voting_power', default: 0.0
     t.float 'grant_contribution'
     t.date 'start_date'
     t.date 'end_date'

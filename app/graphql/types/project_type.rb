@@ -23,7 +23,7 @@ module Types
     end
 
     def project_match_amount
-      return unless object.grant_id
+      return unless object.grant_id || grant.total_voting_power || object.voting_power
 
       total_voting_power = grant.total_voting_power
       life_time_amount_received = grant.lifetime_funding_received
