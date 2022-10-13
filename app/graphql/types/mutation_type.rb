@@ -19,6 +19,6 @@ module Types
 
     # Comments
     field :comment_on_grant, mutation: Mutations::CommentOnGrant
-    field :comment_on_grant, mutation: Mutations::CommentOnProject
+    field :comment_on_project, mutation: Mutations::CommentOnProject
   end
 end
