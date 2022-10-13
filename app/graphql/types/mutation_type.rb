@@ -16,5 +16,9 @@ module Types
 
     # Checkout
     field :proceed_checkout, mutation: Mutations::ProceedCheckout
+
+    # Comments
+    field :comment_on_grant, mutation: Mutations::CommentOnGrant
+    field :comment_on_grant, mutation: Mutations::CommentOnProject
   end
 end

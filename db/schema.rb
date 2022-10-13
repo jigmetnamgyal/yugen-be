@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_221_013_000_431) do
+ActiveRecord::Schema[7.0].define(version: 20_221_013_060_040) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -56,6 +56,17 @@ ActiveRecord::Schema[7.0].define(version: 20_221_013_000_431) do
     t.datetime 'updated_at', null: false
     t.index %w[attachable_type attachable_id], name: 'index_attachments_on_attachable'
     t.index ['user_id'], name: 'index_attachments_on_user_id'
+  end
+
+  create_table 'comments', force: :cascade do |t|
+    t.text 'comment'
+    t.bigint 'user_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'commentable_type', null: false
+    t.bigint 'commentable_id', null: false
+    t.index %w[commentable_type commentable_id], name: 'index_comments_on_commentable'
+    t.index ['user_id'], name: 'index_comments_on_user_id'
   end
 
   create_table 'funding_infos', force: :cascade do |t|
