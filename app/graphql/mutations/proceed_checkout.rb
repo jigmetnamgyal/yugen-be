@@ -9,7 +9,6 @@ module Mutations
     def resolve
       # Integrate payment system here. For now just change the flag
       current_user.orders.each { |order| order.update!(payment_completed: true) }
-      # TODO: calculate: Funding received, grant contribution, Voting power, Total Voting power of grant
 
       update_project_total_contributor!
       update_voting_power_for_project!
@@ -50,17 +49,24 @@ module Mutations
       end
     end
 
+    # TODO: Oh god refactor this lol
     def funding_received!
       projects.each do |project|
         fund_in_nu = 0.0
         fund_in_eth = 0.0
 
-        Order.where(project_id: project.id, payment_completed: true).each do |order|
-          fund_in_nu += order.matching_pool_contribution if order.payment_type == 'nu'
-          fund_in_eth += order.matching_pool_contribution if order.payment_type == 'eth'
-        end
+        if project.funding_info.nil?
+          Order.where(project_id: project.id, payment_completed: true).each do |order|
+            fund_in_nu += order.matching_pool_contribution if order.payment_type == 'nu'
+            fund_in_eth += order.matching_pool_contribution if order.payment_type == 'eth'
+          end
 
-        FundingInfo.create!(project_id: project.id, funding_in_eth: fund_in_eth, funding_in_nu: fund_in_nu)
+          FundingInfo.create!(project_id: project.id, funding_in_eth: fund_in_eth, funding_in_nu: fund_in_nu)
+        else
+          fund_in_nu = project.funding_info.funding_in_nu
+          fund_in_eth = project.funding_info.funding_in_eth
+          project.funding_info.update!(funding_in_nu: fund_in_nu, funding_in_eth: fund_in_eth)
+        end
       end
     end
 
