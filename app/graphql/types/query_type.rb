@@ -20,5 +20,7 @@ module Types
     field :project, resolver: Resolvers::ProjectResolver
 
     field :orders, resolver: Resolvers::OrdersResolver
+
+    field :comments, resolver: Resolvers::CommentsResolver
   end
 end
