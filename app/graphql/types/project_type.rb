@@ -14,6 +14,7 @@ module Types
     field :funding_info, Types::FundingInfoType, null: true
     field :start_date, GraphQL::Types::ISO8601Date, null: true
     field :end_date, GraphQL::Types::ISO8601Date, null: true
+    field :comments, Types::CommentType, null: true
     field :project_match_amount, Float, null: true, description: 'QF amount for grant project only'
 
     def project_banner_url
