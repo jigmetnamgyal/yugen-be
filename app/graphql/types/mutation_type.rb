@@ -23,6 +23,7 @@ module Types
 
     # events
     field :create_event, mutation: Mutations::CreateEvent
+    field :update_event, mutation: Mutations::UpdateEvent
     field :rtc_token, mutation: Mutations::RtcToken
   end
 end
