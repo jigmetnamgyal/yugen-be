@@ -13,7 +13,7 @@ module Mutations
     type Types::EventType
 
     def resolve(attributes:)
-      ProjectCommentAdder.call({ params: attributes.to_h, current_user: current_user })
+      EventCreator.call({ params: attributes.to_h, current_user: current_user })
     end
   end
 end
