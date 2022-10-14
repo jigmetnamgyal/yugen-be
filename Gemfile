@@ -12,13 +12,12 @@ gem 'rack-cors'
 gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+gem 'agora_dynamic_key', '~> 0.1.0'
 gem 'apollo_upload_server', '2.0.5'
 gem 'graphql', '~> 1.12.13'
 gem 'jwt', '~> 2.5'
 gem 'search_object'
 gem 'search_object_graphql'
-
-gem 'agora_dynamic_key', '~> 0.1.0'
 
 group :development, :test do
   gem 'pry'
