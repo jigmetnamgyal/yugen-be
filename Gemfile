@@ -18,6 +18,8 @@ gem 'jwt', '~> 2.5'
 gem 'search_object'
 gem 'search_object_graphql'
 
+gem 'agora_dynamic_key', '~> 0.1.0'
+
 group :development, :test do
   gem 'pry'
   gem 'rubocop-performance'
