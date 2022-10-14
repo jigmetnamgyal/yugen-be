@@ -75,8 +75,10 @@ ActiveRecord::Schema[7.0].define(version: 20_221_014_135_058) do
     t.datetime 'start_date', null: false
     t.datetime 'end_date', null: false
     t.bigint 'user_id', null: false
+    t.bigint 'grant_id', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.index ['grant_id'], name: 'index_events_on_grant_id'
     t.index ['user_id'], name: 'index_events_on_user_id'
   end
 
@@ -163,6 +165,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_014_135_058) do
   add_foreign_key 'active_storage_attachments', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'active_storage_variant_records', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'attachments', 'users'
+  add_foreign_key 'events', 'grants'
   add_foreign_key 'events', 'users'
   add_foreign_key 'funding_infos', 'projects'
   add_foreign_key 'grants', 'users'
