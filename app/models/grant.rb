@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class Grant < ApplicationRecord
+  has_one :event, dependent: :destroy
+  has_one_attached :grant_banner
+
   has_many :projects, dependent: :destroy
   has_many :comments, as: :commentable
-
-  has_one_attached :grant_banner
 
   belongs_to :user
 
