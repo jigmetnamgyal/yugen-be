@@ -3,7 +3,8 @@
 module Mutations
   class CreateEvent < BaseMutation
     class CreateEventAttributes < Types::BaseInputObject
-      argument :title, String, required: false
+      argument :grant_id, Integer, required: true
+      argument :title, String, required: true
       argument :start_date, GraphQL::Types::ISO8601DateTime, required: true
       argument :end_date, GraphQL::Types::ISO8601DateTime, required: true
     end
