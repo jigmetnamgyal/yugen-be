@@ -11,7 +11,7 @@ module Resolvers
     option :project_type, type: Types::ProjectTypeEnum, with: :filter_orders
 
     def filter_orders(scope, value)
-      if value == 'ideas'
+      if value == 'idea'
         scope.joins(:project).where(project: { grant_id: nil })
       else
         scope.joins(:project).where.not(project: { grant_id: nil })
