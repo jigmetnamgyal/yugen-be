@@ -9,7 +9,7 @@ module Api
         if @user.present? && valid_credentials?
           token = GenerateJwtToken.encode(email_address: login_params['email_address'])
           @user.update!(jti: token)
-          render json: { jwt_token: token, user: @user }
+          render json: { jwt_token: token, user: @user, kyc_status: @user&.profile&.kyc_status }
         else
           render json: { error: 'Not Authorized' }, status: :unauthorized
         end
