@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Project < ApplicationRecord
+  # cool
   has_many :comments, as: :commentable, dependent: :destroy
 
   has_one :order, dependent: :destroy
