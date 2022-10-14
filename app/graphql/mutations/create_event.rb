@@ -10,7 +10,7 @@ module Mutations
     end
 
     argument :attributes, CreateEventAttributes, required: true
-    type Types::CommentType
+    type Types::EventType
 
     def resolve(attributes:)
       ProjectCommentAdder.call({ params: attributes.to_h, current_user: current_user })
