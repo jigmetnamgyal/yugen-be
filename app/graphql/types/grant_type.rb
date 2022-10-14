@@ -16,6 +16,7 @@ module Types
     field :start_date, GraphQL::Types::ISO8601Date, null: true
     field :end_date, GraphQL::Types::ISO8601Date, null: true
     field :comments, [Types::CommentType], null: true
+    field :total_voting_power, Float, null: true
 
     def grant_banner_url
       return if object.grant_banner.blob.nil?
