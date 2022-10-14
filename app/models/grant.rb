@@ -5,7 +5,7 @@ class Grant < ApplicationRecord
   has_one_attached :grant_banner
 
   has_many :projects, dependent: :destroy
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
 
   belongs_to :user
 

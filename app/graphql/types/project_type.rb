@@ -16,6 +16,7 @@ module Types
     field :end_date, GraphQL::Types::ISO8601Date, null: true
     field :comments, [Types::CommentType], null: true
     field :project_match_amount, Float, null: true, description: 'QF amount for grant project only'
+    field :project_type, Types::ProjectTypeEnum, null: true
 
     def project_banner_url
       return if object.project_banner.blob.nil?
@@ -37,6 +38,10 @@ module Types
 
     def grant
       @_grant ||= object.grant
+    end
+
+    def project_type
+      object.grant ? 'grant' : 'idea'
     end
   end
 end
