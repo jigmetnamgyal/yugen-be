@@ -4,14 +4,18 @@ module Resolvers
   class OrdersResolver < PaginationBase
     graphql_name 'orders'
 
-    scope { Order.where(payment_completed: false) }
+    scope { current_user.orders.where(payment_completed: false) }
 
     type Types::OrderType.connection_type, null: false
 
-    option :payment_type, type: Types::PaymentTypeEnum, with: :filter_orders
+    option :project_type, type: Types::ProjectTypeEnum, with: :filter_orders
 
     def filter_orders(scope, value)
-      scope.where(payment_type: value)
+      if value == 'ideas'
+        scope.joins(:project).where(project: { grant_id: nil })
+      else
+        scope.joins(:project).where.not(project: { grant_id: nil })
+      end
     end
   end
 end
