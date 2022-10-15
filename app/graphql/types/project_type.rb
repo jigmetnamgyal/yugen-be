@@ -33,7 +33,7 @@ module Types
       life_time_amount_received = grant.lifetime_funding_received
       project_voting_power = object.voting_power
 
-      (project_voting_power / total_voting_power) * life_time_amount_received
+      ((project_voting_power / total_voting_power) * life_time_amount_received).round(2)
     end
 
     def grant
